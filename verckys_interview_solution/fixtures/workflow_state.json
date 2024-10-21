@@ -30,19 +30,19 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-10-22 00:09:58.200768",
-  "name": "Need Modification",
-  "style": "Danger",
-  "workflow_state_name": "Need Modification"
+  "modified": "2024-10-22 00:11:08.159138",
+  "name": "Draft",
+  "style": "Info",
+  "workflow_state_name": "Draft"
  },
  {
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "",
-  "modified": "2024-10-22 00:11:08.159138",
-  "name": "Draft",
-  "style": "Info",
-  "workflow_state_name": "Draft"
+  "modified": "2024-10-22 00:09:58.200768",
+  "name": "Need Modification",
+  "style": "Danger",
+  "workflow_state_name": "Need Modification"
  },
  {
   "docstatus": 0,
