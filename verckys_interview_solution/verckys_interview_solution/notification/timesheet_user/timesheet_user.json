@@ -1,0 +1,31 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.workflow_state==\"Needs Modification\"",
+ "creation": "2024-10-22 00:45:59.184101",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Custom Timesheet",
+ "enabled": 1,
+ "event": "Save",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p>Add your message here</p>\n",
+ "message_type": "Markdown",
+ "modified": "2024-10-22 01:09:16.638697",
+ "modified_by": "Administrator",
+ "module": "Verckys Interview Solution",
+ "name": "Timesheet User",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "condition": "",
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Timesheet User"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "your timesheet {{doc.workflow_state}}"
+}
