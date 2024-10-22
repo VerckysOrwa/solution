@@ -11,13 +11,11 @@ frappe.ui.form.on("Custom Work Order", {
       },
       callback: (r) => {
         if (r) {
-          console.log(r.message);
           let itemsData = r.message;
           let item_table = frm.doc.required_items;
 
           for (let data of itemsData) {
             for (let row of item_table) {
-              console.log("this row log", row);
               row.item_code = data.item_code;
               row.required_qty = data.required_qty;
             }
@@ -28,7 +26,8 @@ frappe.ui.form.on("Custom Work Order", {
     });
   },
   refresh(frm) {
-    frm.add_custom_button("Select Sales Orders", () => {
+
+    frm.add_custom_button("Select Multiple Sales Orders", () => {
         let dialog = new frappe.ui.Dialog({
             title: "Select Sales Orders",
             fields: [
@@ -54,20 +53,16 @@ frappe.ui.form.on("Custom Work Order", {
             
                 if (data.sales_orders && data.sales_orders.length) {
                     data.sales_orders.forEach(order => {
-                        console.log("This is a log for the order",order);
                         
                         frappe.call({
                             method: "verckys_interview_solution.services.rest.fetch_sales_order_items",
                             args: { parent: order.sales_order },
                             callback: (r) => {
                                 if (r && r.message) {
-                                    console.log("i am here.....",r.message);
                                     let itemsData = r.message;
                                     let item_table = frappe.model.add_child(frm.doc, "Required Items", "required_items");
-                                    console.log("i am the item table",item_table);
 
                                     for (let data of itemsData) {
-                                        console.log("data in the for loopcnjdsnckjds",data);
                                         
                             
                                           item_table.custom_sales_order = order.sales_order;

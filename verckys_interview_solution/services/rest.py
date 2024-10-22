@@ -15,7 +15,6 @@ def create_user_permission(docName,userName,doctype):
 
 @frappe.whitelist()
 def create_work_order(docName,item,qty,bom_no,targetWarehouse,progressWarehouse):
-    print(f"\n\n\n\n{item}\n\n\n\n")
     try:
         
         
@@ -51,6 +50,5 @@ def fetch_sales_order_items(parent):
             "source_warehouse":"Stores - DB",
             
         })
-    # print(f"This are the itemse\n\n\n\n{get_items}\n\n\n")
     return sales_order_items
     

@@ -74,8 +74,7 @@
   "production_plan_sub_assembly_item",
   "product_bundle_item",
   "amended_from",
-  "connections_tab",
-  "amended_from"
+  "connections_tab"
  ],
  "fields": [
   {
@@ -585,19 +584,20 @@
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
+   "ignore_user_permissions": 1,
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Custom Work Order",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
+   "oldfieldname": "amended_from",
+   "oldfieldtype": "Data",
+   "options": "Work Order",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-cogs",
  "image_field": "image",
  "is_submittable": 1,
  "links": [],
- "modified": "2024-10-22 03:15:04.953054",
+ "modified": "2024-10-22 14:51:09.361859",
  "modified_by": "Administrator",
  "module": "Verckys Interview Solution",
  "name": "Custom Work Order",
