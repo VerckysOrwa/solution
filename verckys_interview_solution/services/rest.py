@@ -14,15 +14,20 @@ def create_user_permission(docName,userName,doctype):
 
 
 @frappe.whitelist()
-def create_work_order(docName,item,qty,bom_no,targetWarehouse):
+def create_work_order(docName,item,qty,bom_no,targetWarehouse,progressWarehouse):
+    print(f"\n\n\n\n{item}\n\n\n\n")
     try:
+        
+        
         work_order_doc = frappe.get_doc({
             "doctype": "Custom Work Order",
             "production_item": item,  
-            "qty_to_manufacture": float(qty),
+            "qty": float(qty),
             "sales_order": docName,
             "bom_no": bom_no,
-            "fg_warehouse": targetWarehouse
+            "fg_warehouse": targetWarehouse,
+            "wip_warehouse": progressWarehouse,
+            "required_items":fetch_sales_order_items(docName)
         })
         work_order_doc.insert()
         work_order_doc.save()
@@ -30,7 +35,6 @@ def create_work_order(docName,item,qty,bom_no,targetWarehouse):
         
     except Exception as e:
         frappe.throw(f"Error creating Work Order: {str(e)}")
-        frappe.log(e)
         
         
         
@@ -41,9 +45,10 @@ def fetch_sales_order_items(parent):
     for item in get_items:
         sales_order_items.append({
             "item_code":item.item_code,
-            "qty":item.qty,
+            "required_qty":item.qty,
             "rate":item.rate,
-            "amount":item.amount
+            "amount":item.amount,
+            "source_warehouse":"Stores - DB"
         })
     # print(f"This are the itemse\n\n\n\n{get_items}\n\n\n")
     return sales_order_items

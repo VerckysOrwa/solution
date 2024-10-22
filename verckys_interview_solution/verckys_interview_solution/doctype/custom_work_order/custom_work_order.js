@@ -19,7 +19,7 @@ frappe.ui.form.on("Custom Work Order", {
             for (let row of item_table) {
               console.log("this row log", row);
               row.item_code = data.item_code;
-              row.required_qty = data.qty;
+              row.required_qty = data.required_qty;
             }
           }
           frm.refresh_field("required_items")
