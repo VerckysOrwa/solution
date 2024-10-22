@@ -248,5 +248,6 @@ fixtures = [
     "Workflow State",
     "Workflow Action Master",
     "Client Script",
-    "Custom Field"
+    "Custom Field",
+    "Workspace"
 ]

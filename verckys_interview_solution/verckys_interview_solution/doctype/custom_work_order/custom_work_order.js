@@ -49,7 +49,6 @@ frappe.ui.form.on("Custom Work Order", {
             ],
             primary_action_label: "Get Items",
             primary_action(data) {
-                console.log("This is the data:", data);
             
                 if (data.sales_orders && data.sales_orders.length) {
                     data.sales_orders.forEach(order => {
