@@ -22,9 +22,37 @@ frappe.ui.form.on("Custom Work Order", {
               row.required_qty = data.required_qty;
             }
           }
-          frm.refresh_field("required_items")
+          frm.refresh_field("required_items");
         }
       },
     });
   },
+  refresh(frm) {
+    frm.add_custom_button("Select Sales Orders", () => {
+        let dialog = new frappe.ui.Dialog({
+            title: "Select Sales Orders",
+            fields: [
+                {
+                    fieldname: "sales_orders",
+                    fieldtype: "Table",
+                    label: "Sales Orders",
+                    options: "Sales Order CT",
+                    fields: [
+                        {
+                            fieldname: "sales_order",
+                            fieldtype: "Link",
+                            options: "Sales Order",
+                            in_list_view: 1,
+                            label: "Sales Order"
+                        }
+                    ]
+                }
+            ],
+            primary_action_label: "Get Items",
+            
+        });
+        dialog.show();
+    });
+}
+
 });
