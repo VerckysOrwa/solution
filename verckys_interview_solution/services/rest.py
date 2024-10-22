@@ -48,7 +48,8 @@ def fetch_sales_order_items(parent):
             "required_qty":item.qty,
             "rate":item.rate,
             "amount":item.amount,
-            "source_warehouse":"Stores - DB"
+            "source_warehouse":"Stores - DB",
+            
         })
     # print(f"This are the itemse\n\n\n\n{get_items}\n\n\n")
     return sales_order_items

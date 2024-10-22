@@ -49,6 +49,46 @@ frappe.ui.form.on("Custom Work Order", {
                 }
             ],
             primary_action_label: "Get Items",
+            primary_action(data) {
+                console.log("This is the data:", data);
+            
+                if (data.sales_orders && data.sales_orders.length) {
+                    data.sales_orders.forEach(order => {
+                        console.log("This is a log for the order",order);
+                        
+                        frappe.call({
+                            method: "verckys_interview_solution.services.rest.fetch_sales_order_items",
+                            args: { parent: order.sales_order },
+                            callback: (r) => {
+                                if (r && r.message) {
+                                    console.log("i am here.....",r.message);
+                                    let itemsData = r.message;
+                                    let item_table = frappe.model.add_child(frm.doc, "Required Items", "required_items");
+                                    console.log("i am the item table",item_table);
+
+                                    for (let data of itemsData) {
+                                        console.log("data in the for loopcnjdsnckjds",data);
+                                        
+                            
+                                          item_table.custom_sales_order = order.sales_order;
+                                          item_table.item_code = data.item_code;
+                                          item_table.required_qty = data.required_qty;
+                                          item_table.source_warehouse=data.source_warehouse
+                                        
+                                      }
+            
+                                    frm.refresh_field("required_items");
+                                }
+                            }
+                        });
+                    });
+                } else {
+                    frappe.msgprint(__("Please select at least one Sales Order"));
+                }
+            
+                dialog.hide();
+            }
+            
             
         });
         dialog.show();
